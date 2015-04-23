@@ -6,22 +6,16 @@
 @foreach ($arr as $key => $val)
     @if ( @isforeachfirst($val) )
         first
-        <br />
     @endif
 
     key = {{ $key }}
-    <br />
     val = {{ $val }}
-    <br />
 
-    {{ @foreachindex($val) }}
-    <br />
+    {{ @foreachindex($val) }} <!-- int, starts at 0 -->
 
     @if ( @isforeachlast($val) )
         end
-        <br />
     @endif
-    <hr />
 @endforeach
 ```
 
