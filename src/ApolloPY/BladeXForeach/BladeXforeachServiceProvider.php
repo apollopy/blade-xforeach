@@ -41,7 +41,7 @@ foreach%s:
 ?>
 eof;
 
-            $pattern = $compiler->createMatcher('foreach');
+            $pattern = '/(?<!\w)(\s*)@foreach(\s*\(.*\))/U';
             if (preg_match_all($pattern, $view, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     if (!preg_match('/\s*\((.+)\s*as\s*([^\s]+)(\s*=>\s*([^\s]+)\s*)*\)/U', $match[2], $m)) {
