@@ -4,13 +4,13 @@ A simple blade extension for foreach (supports laravel 4.2+).
 
 ## Installation
 
-### Requirements
+Requirements
 ```JSON
 "php": ">=5.4.0",
 "illuminate/support": "4.2.*"
 ```
 
-### Composer
+Composer
 ```JSON
   "repositories": [
     {
@@ -23,7 +23,6 @@ A simple blade extension for foreach (supports laravel 4.2+).
   }
 ```
 
-### Laravel
 Add the service provider in app/config/app.php:
 ```php
 'ApolloPY\BladeXForeach\ServiceProvider'
