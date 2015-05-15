@@ -37,20 +37,21 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider {
 foreach%s:
 \$__x_iteration_%s++;
 ?>
+%s
 eof;
 
-            $pattern = '/(?<!\w)(\s*)@foreach(\s*\(.*\))/U';
+            $pattern = $compiler->createMatcher('foreach');
             if (preg_match_all($pattern, $view, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
-                    if (!preg_match('/\s*\((.+)\s*as\s*([^\s]+)(\s*=>\s*([^\s]+)\s*)*\)/U', $match[2], $m)) {
+                    if (!preg_match('/\s*(\((.+)\s*as\s*([^\s]+)(\s*=>\s*([^\s]+)\s*)*\))(.*)/', $match[2], $m)) {
                         break;
                     }
 
-                    $val_name = $m[2];
-                    if (isset($m[4])) $val_name = $m[4];
+                    $val_name = $m[3];
+                    if (isset($m[5]) && $m[5]) $val_name = $m[5];
                     $val_name = substr($val_name, strpos($val_name, '$') + 1);
 
-                    $view = str_replace($match[0], sprintf($php_format, $match[1], $val_name, $val_name, $m[1], $match[2], $val_name), $view);
+                    $view = str_replace($match[0], sprintf($php_format, $match[1], $val_name, $val_name, $m[2], $m[1], $val_name, $m[6]), $view);
                 }
             }
 
