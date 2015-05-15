@@ -19,7 +19,7 @@ Composer
     }
   ],
   "require": {
-    "apollopy/blade-xforeach": "v1.0"
+    "apollopy/blade-xforeach": "v1.1"
   }
 ```
 
