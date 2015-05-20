@@ -55,7 +55,7 @@ eof;
                 }
             }
 
-            $pattern = $compiler->createMatcher('foreachindex');
+            $pattern = '/(?<!\w)(\s*)@foreachindex(\s*\(.*\))/U';
             if (preg_match_all($pattern, $view, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     if (!preg_match('/\s*\(\$(.*)\)/U', $match[2], $m)) {
@@ -66,7 +66,7 @@ eof;
                 }
             }
 
-            $pattern = $compiler->createMatcher('isforeachfirst');
+            $pattern = '/(?<!\w)(\s*)@isforeachfirst(\s*\(.*\))/U';
             if (preg_match_all($pattern, $view, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     if (!preg_match('/\s*\(\$(.*)\)/U', $match[2], $m)) {
@@ -77,7 +77,7 @@ eof;
                 }
             }
 
-            $pattern = $compiler->createMatcher('isforeachlast');
+            $pattern = '/(?<!\w)(\s*)@isforeachlast(\s*\(.*\))/U';
             if (preg_match_all($pattern, $view, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
                     if (!preg_match('/\s*\(\$(.*)\)/U', $match[2], $m)) {
