@@ -91,6 +91,12 @@ eof;
             $pattern = $compiler->createPlainMatcher('endforeach');
             $view = preg_replace($pattern, "<?php endforeach; ?>", $view);
 
+            $pattern = $compiler->createPlainMatcher('continue');
+            $view = preg_replace($pattern, "<?php continue; ?>", $view);
+
+            $pattern = $compiler->createPlainMatcher('break');
+            $view = preg_replace($pattern, "<?php break; ?>", $view);
+
             return $view;
         });
 	}
