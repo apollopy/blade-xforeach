@@ -19,7 +19,7 @@ Composer
     }
   ],
   "require": {
-    "apollopy/blade-xforeach": "v1.2"
+    "apollopy/blade-xforeach": "v1.3"
   }
 ```
 
@@ -40,10 +40,15 @@ Add the service provider in app/config/app.php:
     val = {{ $val }}
 
     {{ @foreachindex($val) }} <!-- int, starts at 0 -->
+    
+    {{ @foreachiteration($val) }} <!-- int, starts at 1 -->
 
     @if ( @isforeachlast($val) )
         end
     @endif
+    
+    @continue
+    @break
 @endforeach
 ```
 

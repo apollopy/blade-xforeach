@@ -66,6 +66,17 @@ eof;
                 }
             }
 
+            $pattern = '/(?<!\w)(\s*)@foreachiteration(\s*\(.*\))/U';
+            if (preg_match_all($pattern, $view, $matches, PREG_SET_ORDER)) {
+                foreach ($matches as $match) {
+                    if (!preg_match('/\s*\(\$(.*)\)/U', $match[2], $m)) {
+                        break;
+                    }
+
+                    $view = str_replace('@foreachiteration' . $m[0], sprintf("(\$__x_iteration_%s)", $m[1]), $view);
+                }
+            }
+
             $pattern = '/(?<!\w)(\s*)@isforeachfirst(\s*\(.*\))/U';
             if (preg_match_all($pattern, $view, $matches, PREG_SET_ORDER)) {
                 foreach ($matches as $match) {
